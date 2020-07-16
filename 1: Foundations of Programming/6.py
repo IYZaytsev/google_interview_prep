@@ -1,4 +1,4 @@
-
+import time
 #Given a non-empty array, 
 #return true if there is a place 
 #to split the array so that the sum of the 
@@ -11,7 +11,7 @@
 #canBalance([10, 10]) → true
 a = [1, 1, 1, 2, 1]
 b = [2, 1, 1, 2, 1]
-c = [1, 0, 1]
+c = [10, 10]
 d = [20, 40]
 e = [10, 5, 5]
 f = [10,10,10,10]
@@ -26,11 +26,9 @@ def canBalance(nums):
     while True:
         if l_sum <= r_sum and l_index != r_index:
             l_sum += nums[l_index]
-            print(f"l index {l_index}")
             l_index += 1
         if r_sum < l_sum and l_index != r_index:
             r_sum += nums[r_index]
-            print(f"r index {r_index}")
             r_index -= 1
         # means they are almost balanced or no balance can be found
         if l_index == r_index:
@@ -46,5 +44,15 @@ def canBalance(nums):
                 return False
         
     return l_sum == r_sum      
-
+start_time = time.perf_counter()
+print(canBalance(a))
+print(canBalance(b))
 print(canBalance(c))
+print(canBalance(d))
+print(canBalance(e))
+print(canBalance(f))
+print(canBalance(g))
+print(canBalance([1, 0, 1]))
+end_time = time.perf_counter()
+total_runtime = end_time - start_time
+print(total_runtime * 100)
